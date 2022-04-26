@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import './App.scss';
+import Layout from '../Layout/Layout';
 
 const App: FC = () => (
-  <>
-    HELLO WORLD
-  </>
+  <div className="app">
+    <Layout />
+  </div>
 );
 
 export default App;
