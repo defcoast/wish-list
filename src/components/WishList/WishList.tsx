@@ -1,20 +1,27 @@
 import React, { FC } from 'react';
 import './WishList.scss';
+import { IWishList } from './interfaces/IWishList';
 
 interface IWishListProps {
-  wishList: string[] | [];
+  wishList: IWishList[] | [];
 }
 
 const WishList: FC<IWishListProps> = ({ wishList }) => (
-  <div className="wishlist">
-    {wishList
-    && wishList.map((wish) => (
-      <ul className="wishlist__list">
-        <li className="wishlist__item">
-          { wish }
-        </li>
-      </ul>
-    ))}
+  <div>
+    {wishList.length !== 0
+      && (
+      <div className="wishlist">
+        <ul className="wishlist__list">
+          {wishList.map((wish) => (
+
+            <li key={wish.id} className="wishlist__item">
+              { wish.value }
+            </li>
+
+          ))}
+        </ul>
+      </div>
+      )}
   </div>
 );
 

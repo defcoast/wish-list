@@ -1,0 +1,15 @@
+@import './src/styles/colors';
+
+.wish-form {
+  display:         flex;
+  justify-content: center;
+
+  &__input {
+    border:           none;
+    outline:          none;
+    padding:          10px;
+    border-radius:    8px;
+    background-color: $isabelline;
+    width:            320px;
+  }
+}

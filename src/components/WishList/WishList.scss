@@ -1,0 +1,22 @@
+@import './src/styles/colors';
+
+.wishlist {
+  max-height:    400px;
+  overflow-y:    scroll;
+  border-radius: 16px;
+  max-width:     520px;
+  margin:        0 auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__item {
+    background-color: $aeroBlue;
+    padding:          10px 20px;
+
+    &:nth-child(2n) {
+      background-color: $cambridgeBlue;
+    }
+  }
+}
