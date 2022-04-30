@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import './MainPage.scss';
 import Container from '../../components/common/Container/Container';
+import AddWishForm from '../../components/AddWishForm/AddWishForm';
+import WishList from '../../components/WishList/WishList';
 
 const MainPage: FC = () => {
   const [value, setValue] = useState<string>('');
@@ -22,20 +24,16 @@ const MainPage: FC = () => {
   return (
     <main className="main-page">
       <Container>
-        { wishList }
 
-        <form
-          action="#"
-          className="main-page__form"
-          onSubmit={handleSubmit}
-        >
+        <WishList
+          wishList={wishList}
+        />
 
-          <input
-            type="text"
-            value={value}
-            onChange={handleChangeValue}
-          />
-        </form>
+        <AddWishForm
+          value={value}
+          onSubmitWish={handleSubmit}
+          onChangeValue={handleChangeValue}
+        />
       </Container>
     </main>
   );
