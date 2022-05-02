@@ -5,11 +5,11 @@ import './MainPage.scss';
 import Container from '../../components/common/Container/Container';
 import AddWishForm from '../../components/AddWishForm/AddWishForm';
 import WishList from '../../components/WishList/WishList';
-import { IWishList } from '../../components/WishList/interfaces/IWishList';
+import { IWish } from '../../components/WishList/interfaces/IWish';
 
 const MainPage: FC = () => {
   const [value, setValue] = useState<string>('');
-  const [wishList, setWishList] = useState<IWishList[] | []>([]);
+  const [wishList, setWishList] = useState<IWish[] | []>([]);
 
   const handleChangeValue = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
@@ -19,7 +19,21 @@ const MainPage: FC = () => {
     e.preventDefault();
 
     setValue('');
-    setWishList([{ id: wishList.length, value }, ...wishList]);
+    setWishList((prev: IWish[] | []) => [{
+      id: Number(new Date()),
+      value,
+      completed: false,
+    }, ...prev]);
+  };
+
+  const toggleHandler = (id: number): void => {
+    setWishList(wishList.map((wish: IWish) => {
+      if (wish.id === id) {
+        wish.completed = !wish.completed;
+      }
+
+      return wish;
+    }));
   };
 
   return (
@@ -35,6 +49,7 @@ const MainPage: FC = () => {
 
         <WishList
           wishList={wishList}
+          onToggle={toggleHandler}
         />
       </Container>
     </main>

@@ -14,9 +14,16 @@
   &__item {
     background-color: $aeroBlue;
     padding:          10px 20px;
+    display:          flex;
+    align-items:      center;
+    gap:              0 8px;
 
     &:nth-child(2n) {
       background-color: $cambridgeBlue;
+    }
+
+    &_completed {
+      text-decoration: line-through;
     }
   }
 }

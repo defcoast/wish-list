@@ -1,24 +1,40 @@
 import React, { FC } from 'react';
 import './WishList.scss';
-import { IWishList } from './interfaces/IWishList';
+import { IWish } from './interfaces/IWish';
 
 interface IWishListProps {
-  wishList: IWishList[] | [];
+  wishList: IWish[] | [];
+  onToggle: (id: number) => void;
 }
 
-const WishList: FC<IWishListProps> = ({ wishList }) => (
+const WishList: FC<IWishListProps> = ({ wishList, onToggle }) => (
   <div>
     {wishList.length !== 0
       && (
       <div className="wishlist">
         <ul className="wishlist__list">
-          {wishList.map((wish) => (
+          {wishList.map((wish: IWish) => {
+            const classes = ['wishlist__item'];
 
-            <li key={wish.id} className="wishlist__item">
-              { wish.value }
-            </li>
+            if (wish.completed) {
+              classes.push('wishlist__item_completed');
+            }
 
-          ))}
+            return (
+              <li key={wish.id} className={classes.join(' ')}>
+                <input
+                  className="wishlist__checkbox"
+                  type="checkbox"
+                  checked={wish.completed}
+                  onChange={onToggle.bind(null, wish.id)}
+                />
+
+                <span className="wishlist__title">
+                  { wish.value }
+                </span>
+              </li>
+            );
+          })}
         </ul>
       </div>
       )}
