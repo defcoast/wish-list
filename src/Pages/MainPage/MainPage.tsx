@@ -19,11 +19,18 @@ const MainPage: FC = () => {
     e.preventDefault();
 
     setValue('');
-    setWishList((prev: IWish[] | []) => [{
+
+    const wishData = {
       id: Number(new Date()),
       value,
       completed: false,
-    }, ...prev]);
+    };
+
+    if (wishData.value === '') {
+      return;
+    }
+
+    setWishList((prev: IWish[] | []) => [wishData, ...prev]);
   };
 
   const toggleHandler = (id: number): void => {
