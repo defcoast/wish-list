@@ -11,12 +11,19 @@
     width: 0;
   }
 
+  &__left-wrapper {
+    display:     flex;
+    gap:         0 8px;
+    align-items: center;
+
+  }
+
   &__item {
     background-color: $aeroBlue;
     padding:          10px 20px;
     display:          flex;
+    justify-content:  space-between;
     align-items:      center;
-    gap:              0 8px;
 
     &:nth-child(2n) {
       background-color: $cambridgeBlue;
@@ -24,6 +31,24 @@
 
     &_completed {
       text-decoration: line-through;
+    }
+  }
+
+  &__checkbox {
+    cursor: pointer;
+  }
+
+  &__button {
+    cursor: pointer;
+    width:  16px;
+    height: 16px;
+
+    &_type {
+      &_remove {
+        background-image:  url(../../images/icons/remove.png);
+        background-size:   16px 16px;
+        background-repeat: no-repeat;
+      }
     }
   }
 }

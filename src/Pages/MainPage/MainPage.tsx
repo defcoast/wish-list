@@ -43,6 +43,10 @@ const MainPage: FC = () => {
     }));
   };
 
+  const removeHandler = (id: number): void => {
+    setWishList(wishList.filter((wish:IWish) => wish.id !== id));
+  };
+
   return (
     <main className="main-page">
       <Container>
@@ -57,6 +61,7 @@ const MainPage: FC = () => {
         <WishList
           wishList={wishList}
           onToggle={toggleHandler}
+          onRemove={removeHandler}
         />
       </Container>
     </main>
